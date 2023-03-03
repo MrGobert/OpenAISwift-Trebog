@@ -5,6 +5,7 @@
 import Foundation
 
 enum Endpoint {
+    case chat
     case completions
     case edits
 }
