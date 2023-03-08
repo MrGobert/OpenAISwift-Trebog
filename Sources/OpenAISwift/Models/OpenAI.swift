@@ -4,32 +4,18 @@
 
 import Foundation
 
-public struct CompletionResponse: Codable {
-     public let object: String
-     public let model: String
-     public let choices: [CompletionChoice]
- }
+public protocol Payload: Codable { }
 
- public struct CompletionChoice: Codable {
-     public let text: String
- }
+public struct OpenAI<T: Payload>: Codable {
+    public let object: String
+    public let model: String?
+    public let choices: [T]
+}
 
- public struct ChatResponse: Codable {
-     public let object: String
-     public let model: String
-     public let choices: [ChatChoice]
- }
+public struct TextResult: Payload {
+    public let text: String
+}
 
- public struct ChatChoice: Codable {
-     public let message: Message
- }
-
- public struct Message: Codable {
-     public let role: String
-     public let content: String
-
-     public init(role: String, content: String) {
-         self.role = role
-         self.content = content
-     }
- }
+public struct MessageResult: Payload {
+    public let message: ChatMessage
+}
