@@ -16,7 +16,7 @@ public struct ChatMessage: Codable {
     public let content: String
     public let name: String?
     
-    public init(role: ChatRole, name: String?, content: String) {
+    public init(role: ChatRole, name: String? = nil, content: String) {
         self.role = role
         self.name = name
         self.content = content
