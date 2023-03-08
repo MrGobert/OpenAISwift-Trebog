@@ -14,9 +14,11 @@ public enum ChatRole: String, Codable {
 public struct ChatMessage: Codable {
     public let role: ChatRole
     public let content: String
+    public let name: String?
     
-    public init(role: ChatRole, content: String) {
+    public init(role: ChatRole, name: String?, content: String) {
         self.role = role
+        self.name = name
         self.content = content
     }
 }
